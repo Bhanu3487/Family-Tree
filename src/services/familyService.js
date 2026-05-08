@@ -63,11 +63,38 @@ function getChildren(personId) {
   );
 }
 
+function getSiblings(personId) {
+  const person = getPersonById(personId);
+
+  if (!person) {
+    return [];
+  }
+
+  const persons = loadPersons();
+
+  return persons.filter(p => {
+    if (p.id === personId) {
+      return false;
+    }
+
+    const sameMother =
+      person.mother &&
+      p.mother === person.mother;
+
+    const sameFather =
+      person.father &&
+      p.father === person.father;
+
+    return sameMother && sameFather;
+  });
+}
+
 module.exports = {
   loadPersons,
   savePersons,
   addPerson,
   getPersonById,
   getParents,
-  getChildren
+  getChildren,
+  getSiblings
 };
