@@ -57,6 +57,18 @@ Each person contains:
   siblingOrder: 2
 }
 
+
+```
+
+kutumbam/
+│
+├── data/
+├── src/
+│   ├── models/
+│   ├── services/
+│   └── utils/
+│
+├── package.json
 ```
 
 # Relationship Rules
