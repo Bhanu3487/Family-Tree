@@ -16,7 +16,7 @@
     "dob": null,
     "mother": null,
     "father": null,
-    "spouses": [],
+    "spouses": ["bec0f844-4f89-4f6d-b922-e6237661fcb3"],
     "siblingOrder": null
   },
   {
@@ -26,7 +26,7 @@
     "dob": null,
     "mother": null,
     "father": null,
-    "spouses": [],
+    "spouses": ["13b20581-65dc-4deb-8712-529d9ab2c989"],
     "siblingOrder": null
   },
   {

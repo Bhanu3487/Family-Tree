@@ -54,6 +54,18 @@ function getParents(personId) {
   };
 }
 
+function getSpouses(personId) {
+  const person = getPersonById(personId);
+
+  if (!person) {
+    return [];
+  }
+
+  return person.spouses.map(spouseId =>
+    getPersonById(spouseId)
+  );
+}
+
 function getChildren(personId) {
   const persons = loadPersons();
 
@@ -89,12 +101,59 @@ function getSiblings(personId) {
   });
 }
 
+function getNeighbors(personId) {
+  const person = getPersonById(personId);
+
+  if (!person) {
+    return [];
+  }
+
+  const neighbors = [];
+
+  // Parents
+  const parents = getParents(personId);
+
+  if (parents.mother) {
+    neighbors.push(parents.mother);
+  }
+
+  if (parents.father) {
+    neighbors.push(parents.father);
+  }
+
+  // Children
+  neighbors.push(...getChildren(personId));
+
+  // Siblings
+  neighbors.push(...getSiblings(personId));
+
+  // Spouses
+  neighbors.push(...getSpouses(personId));
+
+  // Remove duplicates
+  const uniqueNeighbors = [];
+
+  const seen = new Set();
+
+  for (const neighbor of neighbors) {
+    if (!seen.has(neighbor.id)) {
+      seen.add(neighbor.id);
+
+      uniqueNeighbors.push(neighbor);
+    }
+  }
+
+  return uniqueNeighbors;
+}
+
 module.exports = {
   loadPersons,
   savePersons,
   addPerson,
   getPersonById,
   getParents,
+  getSpouses,
   getChildren,
-  getSiblings
+  getSiblings,
+  getNeighbors
 };
