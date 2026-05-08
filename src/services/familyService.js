@@ -30,8 +30,44 @@ function addPerson(personData) {
   return person;
 }
 
+function getPersonById(id) {
+  const persons = loadPersons();
+
+  return persons.find(person => person.id === id);
+}
+
+function getParents(personId) {
+  const person = getPersonById(personId);
+
+  if (!person) {
+    return null;
+  }
+
+  return {
+    mother: person.mother
+      ? getPersonById(person.mother)
+      : null,
+
+    father: person.father
+      ? getPersonById(person.father)
+      : null
+  };
+}
+
+function getChildren(personId) {
+  const persons = loadPersons();
+
+  return persons.filter(person =>
+    person.mother === personId ||
+    person.father === personId
+  );
+}
+
 module.exports = {
   loadPersons,
   savePersons,
-  addPerson
+  addPerson,
+  getPersonById,
+  getParents,
+  getChildren
 };
