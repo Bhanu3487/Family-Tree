@@ -34,6 +34,8 @@ Examples:
 - nephews
 - nieces
 
+Brief Idea: Each person has 'close relationships' which includes parents, spouse,siblings and children. The relationship between 2 people can be listed as a combination of these 'close relationships'. Once the list of these fundamental relationships are obtained, they are merged using a set of pre-defined rules to give the correct relationship terms. 
+
 ---
 
 # Data Model
@@ -128,56 +130,86 @@ Me
 Result:
 Cousin
 
+## Supported Relationship Categories
 
-# Supported Relationship Categories
-## Direct Relationships
-English	Telugu
+### Direct Relationships
 
-Mother	Amma
-Father	Nanna
-Son	Koduku
-Daughter	Kuthuru
-Husband	Bhartha
-Wife	Bharya
-Elder Brother	Anna 
-Elder Sister	Akka 
-Younder Brother  Thammudu
-Younder Sister   Chelli
+| English | Telugu |
+|---|---|
+| Mother | Amma |
+| Father | Nanna |
+| Son | Koduku |
+| Daughter | Kuthuru |
+| Husband | Bhartha |
+| Wife | Bharya |
+| Elder Brother | Anna |
+| Elder Sister | Akka |
+| Younger Brother | Thammudu |
+| Younger Sister | Chelli |
 
+---
 
-## Grandparent Relationships
-English	Telugu
+### Grandparent Relationships
 
-Maternal Grandfather	Thaathaya
-Maternal Grandmother	Ammamma
-Paternal Grandfather	Thaathaya
-Paternal Grandmother	Nannamma
+| English | Telugu |
+|---|---|
+| Maternal Grandfather | Thaathaya |
+| Maternal Grandmother | Ammamma |
+| Paternal Grandfather | Thaathaya |
+| Paternal Grandmother | Nannamma |
 
+---
 
-## Uncle and Aunt Relationships
-English	
+### Uncle and Aunt Relationships
 
-Maternal Uncle	Maavayya
-Maternal Aunt	Pinni
-Paternal Uncle	Babai
-Paternal Aunt	Atha
+| English | Telugu |
+|---|---|
+| Maternal Uncle | Maavayya |
+| Maternal Aunt | Pinni |
+| Paternal Uncle | Babai |
+| Paternal Aunt | Atha |
 
-## Cousin Relationships
-English	Telugu
+---
 
-Cousin Elder Brother	Annayya
-Cousin Elder Sister	Akka
-Cousin Younger Brother Thammudu
-Cousin Younger Sister   Chelli
+### Cousin Relationships
 
-## In-Law Relationships
-English	Telugu
+| English | Telugu |
+|---|---|
+| Cousin Elder Brother | Annayya |
+| Cousin Elder Sister | Akka |
+| Cousin Younger Brother | Thammudu |
+| Cousin Younger Sister | Chelli |
 
-Father-in-law	Mamayya
-Mother-in-law	Athayya
-Brother-in-law	Baava
-Sister-in-law	Maradalu
+---
 
+### Grandchildren Relationships
+
+| English | Telugu |
+|---|---|
+| Grandson | Manavadu |
+| Granddaughter | Manavaralu |
+
+---
+
+### Nephew and Niece Relationships
+
+| English | Telugu |
+|---|---|
+| Nephew | Menalludu |
+| Niece | Menakodalu |
+
+---
+
+### In-Law Relationships
+
+| English | Telugu |
+|---|---|
+| Father-in-law | Mamayya |
+| Mother-in-law | Athayya |
+| Brother-in-law | Baava |
+| Sister-in-law | Maradalu |
+
+---
 
 # Core Functionalities
 ## Person Management
