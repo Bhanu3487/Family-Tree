@@ -3,6 +3,7 @@ const crypto = require("crypto");
 class Person {
   constructor({
     name,
+    nickname = null,
     gender,
     dob = null,
     mother = null,
@@ -13,8 +14,9 @@ class Person {
     this.id = crypto.randomUUID();
 
     this.name = name;
-    this.gender = gender;
+    this.nickname = nickname;
 
+    this.gender = gender;
     this.dob = dob;
 
     this.mother = mother;
