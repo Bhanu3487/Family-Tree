@@ -18,6 +18,13 @@ function isFemale(person) {
   return person.gender === "female";
 }
 
+/**
+ * Determines the relationship edge between two people based on their IDs.
+ * @param {string} fromPersonId - The ID of the first person.
+ * @param {string} toPersonId - The ID of the second person.
+ * @returns {string|null} The relationship edge (e.g., "mother") or null if no direct relationship exists.
+ */
+
 function getRelationshipEdge(fromPersonId, toPersonId) {
 
   const fromPerson =
@@ -130,6 +137,12 @@ function getRelationshipEdge(fromPersonId, toPersonId) {
   return null;
 }
 
+
+/**
+ * Converts a path of person IDs to a list of relationship edges.
+ * @param {string[]} path - An array of person (not ids) representing the path.
+ * @returns {string[]} An array of relationship edges corresponding to the path.
+ */
 function convertPathToEdges(path) {
 
   if (!path || path.length < 2) {
@@ -143,7 +156,7 @@ function convertPathToEdges(path) {
     const currentPerson = path[i];
 
     const nextPerson = path[i + 1];
-
+    
     const edge =
       getRelationshipEdge(
         currentPerson.id,
@@ -156,7 +169,46 @@ function convertPathToEdges(path) {
   return edges;
 }
 
+
+/** * Finds the relationship path between two people and converts it to edges.
+ * @param {string} personA - The ID of the first person.
+ * @param {string} personB - The ID of the second person.
+ * @returns {Object} An object containing the path of people and the corresponding edges.
+ */
+function findRelationshipPath(personA, personB) {
+
+  // -----------------------------------
+  // STEP 1: FIND PATH IN GRAPH
+  // -----------------------------------
+
+  const path =
+    findShortestRelationshipPath(
+      personA,
+      personB
+    );
+
+  if (!path || path.length < 2) {
+    return {
+      path: [],
+      edges: []
+    };
+  }
+
+  // -----------------------------------
+  // STEP 2: CONVERT PATH → EDGES
+  // -----------------------------------
+
+  const edges =
+    convertPathToEdges(path);
+
+  return {
+    path,
+    edges
+  };
+}
+
 module.exports = {
   getRelationshipEdge,
-  convertPathToEdges
+  convertPathToEdges,
+  findRelationshipPath
 };
