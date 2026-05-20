@@ -4,6 +4,8 @@ const crypto = require("crypto");
 
 class Person {
   constructor({
+    id = null,
+    initial = null,
     name,
     nickname = null,
     gender,
@@ -13,20 +15,48 @@ class Person {
     spouses = [],
     siblingOrder = null
   }) {
-    this.id = crypto.randomUUID();
+
+    // -----------------------------------
+    // ID
+    // -----------------------------------
+
+    this.id =
+      id || crypto.randomUUID();
+
+    // -----------------------------------
+    // BASIC INFO
+    // -----------------------------------
+
+    this.initial = initial;
 
     this.name = name;
+
     this.nickname = nickname;
 
+    // -----------------------------------
+    // PERSONAL
+    // -----------------------------------
+
     this.gender = gender;
+
     this.dob = dob;
 
+    // -----------------------------------
+    // FAMILY LINKS
+    // -----------------------------------
+
     this.mother = mother;
+
     this.father = father;
 
     this.spouses = spouses;
 
-    this.siblingOrder = siblingOrder;
+    // -----------------------------------
+    // SIBLING ORDER
+    // -----------------------------------
+
+    this.siblingOrder =
+      siblingOrder;
   }
 }
 
