@@ -71,22 +71,25 @@ function mergeTraits(current, next) {
   return merged;
 }
 
-
 function buildTraitState(edges, genderFrom) {
-  if (!edges || edges.length < 2) {
-    console.warn("No edges provided or direct relationship.");
+
+  if (!edges || edges.length === 0) {
+    console.warn("No edges provided.");
     return null;
   }
 
-  let state = edgeToTrait[edges[0]];
+  // clone first trait
+  let state = {
+    ...edgeToTrait[edges[0]]
+  };
+
   state.genderFrom = genderFrom;
 
-  for (const edge of edges) {
+  // start from SECOND edge
+  for (let i = 1; i < edges.length; i++) {
 
-    if (edge === edges[0]) {
-      continue;
-    } 
-    
+    const edge = edges[i];
+
     const nextTemplate =
       edgeToTrait[edge];
 
@@ -96,7 +99,10 @@ function buildTraitState(edges, genderFrom) {
     }
 
     state =
-      mergeTraits(state, nextTemplate);
+      mergeTraits(
+        state,
+        nextTemplate
+      );
   }
 
   return state;

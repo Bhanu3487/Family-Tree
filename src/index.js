@@ -5,19 +5,72 @@ const {
 const buildTraitState =
   require("./services/traitEngine/buildTraitState");
 
-const edgeTrait =
-  require("./services/traitEngine/traitTemplates");
+const {
+  traitToRelation
+} = require("./services/traitEngine/traitToRelation");
 
-const mergeTraitStates =
-  require("./services/traitEngine/buildTraitState");
-const { traitToRelation } = require("./services/traitEngine/traitToRelation");
+const {
+  findPerson
+} = require("./services/personSearchService");
+
+
+// -----------------------------------
+// SEARCH PEOPLE
+// -----------------------------------
+
+const personA =
+  findPerson("Ramachandra");
+
+const personB =
+  findPerson("Lalitha");
+
+if (!personA || !personB) {
+
+  console.log("Person not found");
+  return;
+}
+
+console.log(
+  "Matched:",
+  personA.name,
+  "->",
+  personB.name
+);
+
+// -----------------------------------
+// FIND RELATIONSHIP PATH
+// -----------------------------------
 
 const { edges } =
-  findRelationshipPath("f3b4f9b2-9b0e-4d63-9e5e-2f59d8dcb201", "2d4fcb8f-7d42-42a5-a7d3-9b7df4bc8c13");
-console.log(edges);
+  findRelationshipPath(
+    personA.id,
+    personB.id
+  );
+
+console.log("Edges:", edges);
+
+// -----------------------------------
+// BUILD TRAIT STATE
+// -----------------------------------
 
 const finalState =
-  buildTraitState(edges, "f");
+  buildTraitState(
+    edges,
+    personA.gender === "male"
+      ? "m"
+      : "f"
+  );
 
+console.log("Trait State:");
 console.log(finalState);
-console.log(traitToRelation(finalState, "f"));
+
+// -----------------------------------
+// FINAL RELATION
+// -----------------------------------
+
+const relation =
+  traitToRelation(finalState);
+
+console.log(
+  `${personB.name} is ${relation} to ${personA.name}`
+);
