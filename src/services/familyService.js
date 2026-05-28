@@ -3,7 +3,7 @@ const path = require("path");
 
 const Person = require("../models/person");
 
-const dataPath = path.join(__dirname, "../../data/persons.json");
+const dataPath = path.join(__dirname, "../data/persons.json");
 
 function loadPersons() {
   const data = fs.readFileSync(dataPath, "utf-8");

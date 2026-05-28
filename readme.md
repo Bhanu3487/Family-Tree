@@ -62,73 +62,16 @@ Each person contains:
 
 ```
 
-kutumbam/
+family/
 │
-├── data/
 ├── src/
 │   ├── models/
 │   ├── services/
 │   └── utils/
-│
+│   └── data/
+│   └── scripts/csvToPersons.js
 ├── package.json
 ```
-
-# Relationship Rules
-## Upward Relationships
-
-Each person can have:
-
-- one mother
-- one father
-
-These are the only upward biological relationships stored directly.
-
-## Horizontal Relationships
-
-Horizontal relationships are derived using:
-
-- common parents
-- spouse connections
-
-Examples:
-
-- siblings
-- cousins
-- in-laws
-
-
-## Downward Relationships
-
-Children are not stored directly.
-
-Children are dynamically discovered by searching for all persons where:
-
-```
-person.mother === targetId
-OR
-person.father === targetId
-```
-
-This prevents:
-
-- duplicated data
-- synchronization problems
-- inconsistent family structures
-- Relationship Engine
-
-The relationship engine works using graph traversal.
-
-The engine searches for paths between people and derives relationship names from the traversal path.
-
-Example:
-
-Me
-→ Mother
-→ Mother's Brother
-→ His Son
-
-Result:
-Cousin
 
 ## Supported Relationship Categories
 
@@ -188,15 +131,6 @@ Cousin
 |---|---|
 | Grandson | Manavadu |
 | Granddaughter | Manavaralu |
-
----
-
-### Nephew and Niece Relationships
-
-| English | Telugu |
-|---|---|
-| Nephew | Menalludu |
-| Niece | Menakodalu |
 
 ---
 

@@ -1,7 +1,7 @@
 // src/services/personSearchService.js
 
 const people =
-  require("../../data/persons.json");
+  require("../data/persons.json");
 
 /**
  * Normalize string
