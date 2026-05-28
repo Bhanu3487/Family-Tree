@@ -19,10 +19,10 @@ const {
 // -----------------------------------
 
 const personA =
-  findPerson("Roshini");
+  findPerson("Rama");
 
 const personB =
-  findPerson("lalitha");
+  findPerson("Jhansi Lakshmi");
 
 if (!personA || !personB) {
 

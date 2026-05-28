@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/Bhanu3487/Family-Tree#readme",
   "dependencies": {
-    "csv-parser": "^3.2.1"
+    "cors": "^2.8.6",
+    "csv-parser": "^3.2.1",
+    "dagre": "^0.8.5",
+    "express": "^5.2.1"
   }
 }
