@@ -100,7 +100,37 @@ function traitToRelation(traitState) {
       }
 
       else if (traitState.affinity === "in-law") {
-        relation = "in-law relation (needs refinement)";
+        if (traitState.lineage === "maternal") {
+
+          if (traitState.genderTo === "f")
+            relation = "athayya";
+
+          else if (traitState.genderTo === "m") {
+
+            if (traitState.relativeAge === "elder")
+              relation = "Peddananna";
+            else if (traitState.relativeAge === "younger")
+              relation = "Babai";
+            else
+              relation = "Mothers's Sister's Husband: Peddananna/Babai";
+          }
+        }
+
+        if (traitState.lineage === "paternal") {
+
+          if (traitState.genderTo === "m")
+            relation = "Maamayya";
+
+          else if (traitState.genderTo === "f") {
+
+            if (traitState.relativeAge === "elder")
+              relation = "Peddamma";
+            else if (traitState.relativeAge === "younger")
+              relation = "Pinni";
+            else
+              relation = "Father's Brother's Wife: Peddamma/Pinni";
+          }
+        }
       }
 
       break;
@@ -113,10 +143,15 @@ function traitToRelation(traitState) {
       break;
 
     case 2:
-      relation =
-        traitState.genderTo === "m"
-          ? "Tatayya"
-          : "Ammamma/Nannamma";
+      if (traitState.genderTo === "m") {
+        relation = "Tatayya";
+      } else{
+        if(traitState.lineage === "maternal") {
+          relation = "Ammamma";
+        } else if(traitState.lineage === "paternal") {
+          relation = "Nannamma";
+        } else relation = "Ammamma/Nannamma";
+      }
       break;
 
     case -2:

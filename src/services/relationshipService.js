@@ -187,6 +187,8 @@ function findRelationshipPath(personA, personB) {
       personB
     );
 
+  // console.log("Path of People:", path.map(p => p.name));
+
   if (!path || path.length < 2) {
     return {
       path: [],
